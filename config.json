@@ -1,0 +1,7 @@
+"scripts": {
+    "start": "node index.js"
+  },
+  "something": {
+     "clientId": "1134561031256035348",
+     "guildId": "999991061827047497"
+  },

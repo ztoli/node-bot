@@ -6,10 +6,6 @@
   "scripts": {
     "start": "node index.js"
   },
-  {
-     "clientId": "1134561031256035348",
-     "guildId": "999991061827047497"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ztoli/node-bot.git"
