@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const token = "MTEzNDU2MTAzMTI1NjAzNTM0OA.GvMRC8.5SNg6CmNvJNVoFbHdpMLvaAYqAX479a9em5-Dc"; 
+const { token }  = require('./config.json'); 
 const {Client, Collection, Events, GatewayIntentBits} = require("discord.js");
 
 
@@ -28,7 +28,7 @@ client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
     const command = interaction.client.commands.get(interaction.commandName);
-
+   
     if (!command) {
         console.error(`No command matching ${interaction.commandName} was found.`);
         return;
