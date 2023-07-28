@@ -4,7 +4,8 @@
   "description": "bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"  },
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ztoli/node-bot.git"
@@ -14,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ztoli/node-bot/issues"
   },
-  "homepage": "https://github.com/ztoli/node-bot#readme"
+  "homepage": "https://github.com/ztoli/node-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.11.0"
+  }
 }
