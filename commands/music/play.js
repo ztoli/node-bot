@@ -32,7 +32,7 @@ module.exports = {
 		if (!interaction.member.voice.channel) return interaction.reply('You need to be in a Voice Channel to play a song.');
 
 		// Create a play queue for the server
-		const queue = await client.player.createQueue(interaction.guild);
+		const queue = await player.play.createQueue(interaction.guild);
 
 		// Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel);
@@ -43,7 +43,7 @@ module.exports = {
 			const url = interaction.options.getString('url');
 
 			// Search for the song using the discord-player
-			const result = await client.player.search(url, {
+			const result = await player.play.search(url, {
 				requestedBy: interaction.user,
 				searchEngine: QueryType.YOUTUBE_VIDEO,
 			});
@@ -65,7 +65,7 @@ module.exports = {
 
 			// Search for the playlist using the discord-player
 			const url = interaction.options.getString('url');
-			const result = await client.player.search(url, {
+			const result = await player.play.search(url, {
 				requestedBy: interaction.user,
 				searchEngine: QueryType.YOUTUBE_PLAYLIST,
 			});
@@ -85,7 +85,7 @@ module.exports = {
 
 			// Search for the song using the discord-player
 			const url = interaction.options.getString('searchterms');
-			const result = await client.player.search(url, {
+			const result = await player.play.search(url, {
 				requestedBy: interaction.user,
 				searchEngine: QueryType.AUTO,
 			});
