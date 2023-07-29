@@ -7,7 +7,7 @@ const {Client, Collection, Events, GatewayIntentBits} = require("discord.js");
 
 
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
 
 client.commands = new Collection();
 
