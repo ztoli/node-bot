@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { token }  = require('./config.json'); 
+const { Player } = require("discord-player");
 const {Client, Collection, Events, GatewayIntentBits} = require("discord.js");
 
 
@@ -48,6 +49,13 @@ client.on(Events.InteractionCreate, async interaction => {
             await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
         }
     }
+});
+
+client.player = new Player(client, {
+	ytdlOptions: {
+		quality: "highestaudio",
+		highWaterMark: 1 << 25
+		}
 });
 
 client.once("ready", () => {
