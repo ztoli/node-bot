@@ -1,14 +1,12 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { useQueue } = require('discord-player');
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('exit')
 		.setDescription('Kick the bot from the channel.'),
 	execute: async (interaction) => {
-		const client = interaction.client;
-
-		// Get the current queue
-		const queue = client.player.getQueue(interaction.guildId);
+		const queue = useQueue(interaction.guild.id);
 
 		if (!queue) {
 			await interaction.reply('There are no songs in the queue');
@@ -16,7 +14,7 @@ module.exports = {
 		}
 
 		// Deletes all the songs from the queue and exits the channel
-		queue.destroy();
+		queue.delete();
 
 		await interaction.reply('Why you do this to me?');
 	},

@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
-const { QueryType } = require('discord-player');
+const { EmbedBuilder } = require('discord.js');
+const { QueryType, useMainPlayer } = require('discord-player');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -27,23 +27,23 @@ module.exports = {
 				.addStringOption(option => option.setName('url').setDescription('the song\'s url').setRequired(true)),
 		),
 	execute: async (interaction) => {
-		const client = interaction.client;
+		const player = useMainPlayer();
 		// Make sure the user is inside a voice channel
 		if (!interaction.member.voice.channel) return interaction.reply('You need to be in a Voice Channel to play a song.');
 
 		// Create a play queue for the server
-		const queue = await player.play.createQueue(interaction.guild);
+		const queue = await player.nodes.create(interaction.guild);
 
 		// Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel);
 
-		const embed = new MessageEmbed();
+		const embed = new EmbedBuilder();
 
 		if (interaction.options.getSubcommand() === 'song') {
 			const url = interaction.options.getString('url');
 
 			// Search for the song using the discord-player
-			const result = await player.play.search(url, {
+			const result = await player.search(url, {
 				requestedBy: interaction.user,
 				searchEngine: QueryType.YOUTUBE_VIDEO,
 			});
@@ -65,7 +65,7 @@ module.exports = {
 
 			// Search for the playlist using the discord-player
 			const url = interaction.options.getString('url');
-			const result = await player.play.search(url, {
+			const result = await player.search(url, {
 				requestedBy: interaction.user,
 				searchEngine: QueryType.YOUTUBE_PLAYLIST,
 			});
@@ -85,7 +85,7 @@ module.exports = {
 
 			// Search for the song using the discord-player
 			const url = interaction.options.getString('searchterms');
-			const result = await player.play.search(url, {
+			const result = await player.search(url, {
 				requestedBy: interaction.user,
 				searchEngine: QueryType.AUTO,
 			});
@@ -105,7 +105,7 @@ module.exports = {
 		}
 
 		// Play the song
-		if (!queue.playing) await queue.play();
+		if (!queue.isPlaying()) await queue.play(queue.tracks.data[0]);
 
 		// Respond with the embed containing information about the player
 		await interaction.reply({

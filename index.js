@@ -9,6 +9,9 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 
 client.commands = new Collection();
 
+const player = new Player(client);
+player.extractors.loadDefault();
+
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
@@ -51,10 +54,6 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 	}
 });
-
-const player = new Player(client);
-
-player.extractors.loadDefault();
 
 
 client.once('ready', () => {
