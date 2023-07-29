@@ -51,12 +51,10 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
-client.player = new Player(client, {
-	ytdlOptions: {
-		quality: "highestaudio",
-		highWaterMark: 1 << 25
-		}
-});
+client.player = new Player(client);
+
+await player.extractors.loadDefault();
+
 
 client.once("ready", () => {
     console.log("The bot is online"); //message when bot is online
