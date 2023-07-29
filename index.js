@@ -51,7 +51,7 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
-client.player = new Player(client);
+client.player = new Player.singleton(client); // discord player will now give us the same instance instead of duplicates and trashing the system
 
 await player.extractors.loadDefault();
 
