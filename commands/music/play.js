@@ -26,7 +26,8 @@ module.exports = {
 				.setDescription('Plays a single song from YT')
 				.addStringOption(option => option.setName('url').setDescription('the song\'s url').setRequired(true)),
 		),
-	execute: async ({ client, interaction }) => {
+	execute: async (interaction) => {
+		const client = interaction.client;
 		// Make sure the user is inside a voice channel
 		if (!interaction.member.voice.channel) return interaction.reply('You need to be in a Voice Channel to play a song.');
 
