@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('elodie')
 		.setDescription('revenge for the other retarded command'),
-	async execute(interaction) {
+	execute: async ({ interaction }) => {
 		// Fuck useless comments
 		await interaction.reply(`mathijs' slave`);
 	},

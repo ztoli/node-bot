@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('mathijs')
 		.setDescription('Corrects the name to use the REAL one.'),
-	async execute(interaction) {
+	execute: async ({ interaction }) => {
 		// Fuck useless comments
 		await interaction.reply(`In fact, it is written MATTHIAS`);
 	},
