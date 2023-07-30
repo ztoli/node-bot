@@ -22,9 +22,12 @@
     "discord-music-player": "^9.1.1",
     "discord-player": "^6.6.2",
     "discord.js": "^14.11.0",
+    "emoji-aware": "^3.1.0",
     "ffmpeg": "^0.0.4",
     "fluent-ffmpeg": "^2.1.2",
     "openai": "^3.3.0",
+    "superagent": "^8.0.9",
+    "weather-js": "^2.0.0",
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {

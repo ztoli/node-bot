@@ -11,7 +11,7 @@ module.exports = {
             const { options } = interaction;
             const location = options.getString('location');
 
-            await interaction.reply({ content: `Gathering the data... (Did you know you can also look out the window?`});
+            await interaction.reply({ content: `Gathering the data... (Did you know you can also look out the window?)`});
 
 
             await weather.find({ search: `${location}`, degreeType: `C`}, async function(err, result) {
@@ -35,13 +35,13 @@ module.exports = {
 
                             const embed = new EmbedBuilder()
                                 .setColor("Blue")
-                                .SetTitle(`Current weather of ${name}`)
-                                .AddFields({ name: `Temperature`, value: `${temp}`})
-                                .AddFields({ name: `Feels like`, value: `${feel}`})
-                                .AddFields({ name: `Weather`, value: `${type}`})
-                                .AddFields({ name: `Current Alerts`, value: `${alert}`})
-                                .AddFields({ name: `Week Day`, value: `${day}`})
-                                .AddFields({ name: `Wind speed & direction`, value: `${wind}`})
+                                .setTitle(`Current weather of ${name}`)
+                                .addFields({ name: `Temperature`, value: `${temp}`})
+                                .addFields({ name: `Feels like`, value: `${feel}`})
+                                .addFields({ name: `Weather`, value: `${type}`})
+                                .addFields({ name: `Current Alerts`, value: `${alert}`})
+                                .addFields({ name: `Week Day`, value: `${day}`})
+                                .addFields({ name: `Wind speed & direction`, value: `${wind}`})
                                 .setThumbnail(icon)
 
                                 interaction.editReply({ content: ``, embeds: [embed]});
