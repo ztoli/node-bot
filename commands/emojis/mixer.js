@@ -9,7 +9,7 @@ module.exports = {
 		.addStringOption(option => option.setName('emojis').setDescription('the emojis to combine').setRequired(true)),
 	async execute(interaction) {
 
-		await interaction.deferReply({ ephemeral: true });
+		await interaction.deferReply();
 
 		const { options } = interaction;
 		const eString = options.getString('emojis');
