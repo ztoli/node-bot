@@ -15,21 +15,21 @@ module.exports = {
 		const website = options.getString('website');
 
 		try {
-			const browser = await puppeteer.launch({ headless: `new`, });
+			const browser = await puppeteer.launch({headless: `new`});
 			const page = await browser.newPage();
 			await page.goto(website);
-			await page.setViewport({width: 1920, height: 1080});
+			//await page.setViewport({width: 1920, height: 1080});
 
 			const screenshot = await page.screenshot();
-
 			await browser.close();
 
 
-			const buffer = Buffer.from(screenshot, 'base64');
+			const buffer = Buffer.from(screenshot);
 			const attachment = new AttachmentBuilder(buffer, {name: 'image.png'});
+			console.log("we are getting here")
 
 			const embed = new EmbedBuilder()
-				.setColor("Pink")
+				.setColor("Blue")
 				.setImage('attachment://image.png')
 
 			await interaction.editReply({embeds: [embed], files: [attachment]});
