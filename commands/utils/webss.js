@@ -15,7 +15,7 @@ module.exports = {
 		const website = options.getString('website');
 
 		try {
-			const browser = await puppeteer.launch();
+			const browser = await puppeteer.launch({ headless: `new`, });
 			const page = await browser.newPage();
 			await page.goto(website);
 			await page.setViewport({width: 1920, height: 1080});
@@ -23,6 +23,7 @@ module.exports = {
 			const screenshot = await page.screenshot();
 
 			await browser.close();
+
 
 			const buffer = Buffer.from(screenshot, 'base64');
 			const attachment = new AttachmentBuilder(buffer, {name: 'image.png'});
