@@ -19,7 +19,7 @@ module.exports = {
 						(currentSong ? `\`[${currentSong.duration}]\` ${currentSong.title} - <@${currentSong.requestedBy.id}>` : 'None') +
 						`\n\n**Queue**\n${tracks}`,
 					)
-					.setThumbnail(currentSong.setThumbnail),
+					.setThumbnail(currentSong.thumbnail),
 			],
 		});
 	},

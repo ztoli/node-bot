@@ -32,7 +32,18 @@ module.exports = {
 		if (!interaction.member.voice.channel) return interaction.reply('You need to be in a Voice Channel to play a song.');
 
 		// Create a play queue for the server
-		const queue = await player.nodes.create(interaction.guild);
+		const queue = await player.nodes.create(interaction.guild, {
+			async onBeforeCreateStream(track, source, _queue) {
+				if (_queue.tracks.toArray().length === 0) {
+					interaction.client.user.setActivity('Idling');
+				} else {
+					interaction.client.user.setActivity(track.title, {
+						type: 2,
+					});
+				}
+				return null;
+			},
+		});
 
 		// Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel);

@@ -14,9 +14,8 @@ module.exports = {
 		const status = options.getString('status');
 		const type = options.getString('type');
 
-		interaction.client.user.setActivity({
-			name: status,
-			type: type - 1,
+		interaction.client.user.setActivity(status, {
+			type: type || 2,
 			url: `https://bsdnix.nl/`,
 		});
 		const embed = new EmbedBuilder()
