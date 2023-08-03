@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('status')
 		.setDescription('sets the bot status')
-		.addStringOption(option => optoin.setName('status').setDescription('Status of bots presence.').setRequired(true))
+		.addStringOption(option => option.setName('status').setDescription('Status of bots presence.').setRequired(true))
 		.addStringOption(option => option.setName('type').setDescription("type of status").addChoices({
 			name: 'playing',
 			value: `${4}`
