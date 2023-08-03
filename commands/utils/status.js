@@ -17,7 +17,7 @@ module.exports = {
 		client.user.setActivity({
 			name: status,
 			type: type - 1,
-			url: ``
+			url: `https://bsdnix.nl/`
 		})
 		const embed = new EmbedBuilder()
 			.setColor('DarkVividPink')
@@ -26,7 +26,7 @@ module.exports = {
 		await interaction.reply({embeds: [embed]})
 
 
-		// add some embedbuilder bullshit, idk how to make it communicate with the player..
+
 	}
 }
 
