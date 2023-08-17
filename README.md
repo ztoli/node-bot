@@ -1,2 +1,2 @@
 # node-bot
-node bot for me and my favorite partner thing
+some node bot, quite a lot of work is put into it
