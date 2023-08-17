@@ -13,9 +13,9 @@ module.exports = {
 			return;
 		}
 
-		// Deletes all the songs from the queue and exits the channel
+
 		queue.delete();
 
-		await interaction.reply('Why you do this to me?');
+		//await interaction.reply('Why you do this to me?');
 	},
 };

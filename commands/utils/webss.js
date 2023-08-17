@@ -26,7 +26,6 @@ module.exports = {
 
 			const buffer = Buffer.from(screenshot, base64);
 			const attachment = new AttachmentBuilder(buffer, {name: 'image.png'});
-			console.log("we are getting here")
 
 			const embed = new EmbedBuilder()
 				.setColor("Blue")
