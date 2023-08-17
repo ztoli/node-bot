@@ -1,7 +1,6 @@
-#Bambu Discord Bot
+# Bambu Discord Bot
 
 Discord Bot created in Node JS with features like:
-
  making web screenshots
  Playing music
  Generating images using AT
