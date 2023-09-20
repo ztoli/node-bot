@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 
 module.exports = {
+    data: new SlashCommandBuilder()
     .setname('random-image')
     .setDescription('Get a random image :D'),
     async execute (interaction) {
